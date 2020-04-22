@@ -4,16 +4,25 @@
 // Fare una funzione in cui diciamo che se il numero che ha inserito diviso per se stesso da resto 0, allora è un numero primo, altrimenti no
 // Fare un alert che notifichi all'utente se il numero che ha inserito è primo o no
 
-var richiestaNumero = prompt("Digita un numero. Ti dirò se è un numero primo!");
+var richiestaNumero = parseInt(prompt("Digita un numero. Ti dirò se è un numero primo!"));
 
 console.log(richiestaNumero);
 
 function primo(richiestaNumero) {
-    if(richiestaNumero % richiestaNumero ==0 && richiestaNumero % 1 == 0 && richiestaNumero % 2 !=0) {
-        alert("Numero primo!", richiestaNumero);
-    } else {
-        alert("Non è primo!", richiestaNumero);
+    for(var counter = 2; counter < richiestaNumero; counter++) {
+        if(richiestaNumero % counter == 0) {
+            return false;
+        }       
     }
+
+    return true;
 }
 
-primo(richiestaNumero);
+var numeroPrimo = primo(richiestaNumero);
+
+if(numeroPrimo == true) {
+    alert("Numero primo!");
+} else {
+    alert("Non è primo!");
+}
+
