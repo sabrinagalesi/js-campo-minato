@@ -23,9 +23,30 @@ function mina (listaMine, richiesta) { //Faccio una funzione per listare  l'arra
     } else {
         return false;
     }
+
+    //return trovato;
+}
+
+function numeroUguale (richiesta, listaUtente) {
+    var uguale = false;
+    for(var pushUtente = 0; pushUtente < listaUtente.length; pushUtente++) {
+        if(richiesta == listaUtente[pushUtente]) {
+            uguale = true;
+        }
+    }
+    console.log("numero uguale", richiesta, uguale, listaUtente )
+    if(uguale == true) {
+        return true;
+    } else {
+        return false;
+    }
+
+    //return uguale;
 }
 
 var listaMine= []; //faccio un array vuoto in cui pushare la lista dei numeri random;
+var listaUtente=[]; //metto i numeri che inserisce l'utente in un array;
+
 
 for(var numeroProibito = 0; numeroProibito < 16; numeroProibito++) { //Faccio un for per generare un numero randomico e pusharlo nell'array per 16 volte
     listaMine.push(Math.floor(Math.random () * 100) + 1);
@@ -37,20 +58,32 @@ var contatoreTentativi = 0;
 
 var ricercaMina = false; //Impostiamo la ricercaMina uguale a false
 
-while(ricercaMina == false) { //Finchè ricercaMina è uguale a false, cioè finchè non hai perso;
+//&& listaUtente.length < 84
+while(ricercaMina == false && contatoreTentativi < 84) { //Finchè ricercaMina è uguale a false, cioè finchè non hai perso; finchè non si arriva a 84 tentativi;
     console.log("While salvo!")
-    var richiesta = parseInt(prompt("Inserisci un numero!"));//Continua a chiedermi un numero
+    do {
+        var richiesta = parseInt(prompt("Inserisci un numero!"))
+        console.log(richiesta, "numero inserito");
+    } while (isNaN(richiesta) || numeroUguale(richiesta, listaUtente) == true); // Con questo while controllo che l'utente non possa scrivere una stringa o uno spazio vuoto.
+    listaUtente.push(richiesta);
     ricercaMina = mina(listaMine, richiesta);     //Continua a richiamare la funzione di ricerca
+    console.log(listaUtente, "lista utente");
     contatoreTentativi++
     console.log(contatoreTentativi, "contatore");
 }
+
 
 if(ricercaMina == true) { // Se trovato = true allora hai perso
     alert("Campo minato! Complimenti! Hai evitato le mine " + contatoreTentativi + " volte!");
 }
 
+if(contatoreTentativi == 84) {
+    alert("Complimenti! Hai vinto la partita!");
+}
 
-//Fare in modo che il giocatore non possa ripetere lo stesso numero, poi che non possa non scrivere niente(NaN); far finire il gioco a 84 tentaviti;
+//Fare in modo che il giocatore non possa ripetere lo stesso numero, 
+// poi che non possa non scrivere niente(NaN); FATTO
+// far finire il gioco a 84 tentaviti; FATTO
 
 
 
