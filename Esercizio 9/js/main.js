@@ -12,6 +12,11 @@ console.log(richiestaNumero);
 
 for(arrayMaker = 0; arrayMaker < richiestaNumero; arrayMaker++) { // genero tanti array quanti ne ha chiesti l'utente;
     var arrayN = [];
-    console.log(arrayMaker,arrayN);
+    for(i=0; i < 10; i++) {
+    arrayN.push(Math.floor(Math.random() * 100) +1);
+    }
+    console.log(arrayMaker,arrayN); 
+    alert(arrayN); 
 }
+ 
 
