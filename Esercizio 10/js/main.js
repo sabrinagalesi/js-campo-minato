@@ -35,6 +35,7 @@
             console.log(numeri[i], "numero dispari");
             numeriDispari += " " + numeri[i];
         }
-        document.getElementById("square-verde").innerHTML = numeriPari;
-        document.getElementById("square-rosso").innerHTML = numeriDispari;
     }
+
+    document.getElementById("square-verde").innerHTML = numeriPari;
+    document.getElementById("square-rosso").innerHTML = numeriDispari;

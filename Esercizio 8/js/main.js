@@ -15,6 +15,6 @@ do {
     console.log(richiesta, numeriUtente);
     somma = somma + richiesta;
     console.log(somma);
-} while(somma != 50 && richiesta < 50);
+} while(somma < 50);
 
 
